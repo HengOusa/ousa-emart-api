@@ -4,20 +4,23 @@ phases:
   install:
     runtime-versions:
       php: 8.2
+      nodejs: 18
+
     commands:
+      - echo Installing dependencies...
       - apt-get update -y
+      - apt-get install -y unzip git libpq-dev libzip-dev
       - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-      - apt-get install -y libpq-dev libzip-dev
-      - apt-get install -y php-pgsql
-      - curl -sS https://getcomposer.org/installer -o composer-setup.php
-      - php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+      - composer --version
+
   pre_build:
     commands:
-      - composer install
+      - echo Running composer install...
+      - composer install --no-dev --optimize-autoloader
+      - echo Running npm install...
       - npm install
+      - npm run build || true
+
 artifacts:
   files:
     - '**/*'
-  name: $(date +%Y-%m-%dT%H:%M:%S).zip
-proxy:
-  upload-artifacts: yes
