@@ -7,5 +7,7 @@
 </head>
 <body>
     <h1>Welcome to Ousa-eMart API</h1>
+    <h1>Welcome to Ousa-eMart API</h1>
+    <h1>Welcome to Ousa-eMart API</h1>
 </body>
 </html>
