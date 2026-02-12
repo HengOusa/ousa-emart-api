@@ -4,7 +4,7 @@ phases:
   install:
     runtime-versions:
       php: 8.2
-      nodejs: 18
+      nodejs: 20   # 🔥 CHANGE THIS
     commands:
       - echo Installing Composer...
       - curl -sS https://getcomposer.org/installer | php
@@ -26,4 +26,3 @@ phases:
 artifacts:
   files:
     - '**/*'
-  discard-paths: no
